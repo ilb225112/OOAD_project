@@ -1,0 +1,41 @@
+# Java / Maven
+target/
+*.class
+*.jar
+*.war
+.mvn/wrapper/maven-wrapper.jar
+
+# Node / React
+node_modules/
+dist/
+.vite/
+*.local
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+.classpath
+.project
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment / secrets
+.env
+.env.local
+*.env
+application-local.properties
+application.properties
+
+# Logs
+*.log
+logs/
+
+# Codex tools
+.codex-tools/
