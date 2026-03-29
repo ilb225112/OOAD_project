@@ -1,4 +1,0 @@
-mvn spring-boot:run
-npm run dev: frontend, backend
-
-admin credentials : admin@auction.com,admin123
