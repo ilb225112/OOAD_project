@@ -1,5 +1,5 @@
 -- WARNING: seed data only, do not use in production
-use railway;
+use auction_system_ooad;
 
 CREATE TABLE IF NOT EXISTS users (
     user_id BIGINT AUTO_INCREMENT PRIMARY KEY,

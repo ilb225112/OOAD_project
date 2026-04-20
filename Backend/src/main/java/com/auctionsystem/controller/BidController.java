@@ -90,6 +90,13 @@ public class BidController {
         }
     }
 
+    @PostMapping("/undo")
+    public ResponseEntity<String> undoLastBid() {
+        boolean success = bidCommandInvoker.undo();
+        return success ? ResponseEntity.ok("Last bid undone successfully")
+                : ResponseEntity.badRequest().body("Nothing to undo");
+    }
+
     @GetMapping("/bidHistory/{auctionId}/{itemId}")
     public ResponseEntity<List<BidDTO>> getBidHistory(@PathVariable Long auctionId, @PathVariable Long itemId) {
         List<BidDTO> bidHistory = bidService.getBidHistory(auctionId, itemId);
