@@ -66,15 +66,32 @@ public class AuctionServiceImpl implements AuctionService {
             throw new IllegalArgumentException("Auction type is required");
         }
 
-        int duration = (auction.getDurationMinutes() != null && auction.getDurationMinutes() > 0)
-            ? auction.getDurationMinutes() : 60;
+        Auction createdAuction;
+        switch (auction.getAuctionType()) {
+            case CRICKET:
+                createdAuction = AuctionFactory.createCricketAuction(auction.getName(), auction.getAuctionDate());
+                break;
+            case ANTIQUES:
+                createdAuction = AuctionFactory.createAntiquesAuction(auction.getName(), auction.getAuctionDate());
+                break;
+            case REAL_ESTATE:
+                createdAuction = AuctionFactory.createRealEstateAuction(auction.getName(), auction.getAuctionDate());
+                break;
+            case KABADDI:
+                createdAuction = AuctionFactory.createKabaddiAuction(auction.getName(), auction.getAuctionDate());
+                break;
+            default:
+                createdAuction = AuctionFactory.createAuction(
+                    auction.getName(),
+                    auction.getAuctionType(),
+                    auction.getAuctionDate()
+                );
+                break;
+        }
 
-        Auction createdAuction = AuctionFactory.createAuction(
-            auction.getName(),
-            auction.getAuctionType(),
-            auction.getAuctionDate(),
-            duration
-        );
+        if (auction.getDurationMinutes() != null && auction.getDurationMinutes() > 0) {
+            createdAuction.setDurationMinutes(auction.getDurationMinutes());
+        }
 
         // Preserve current default behavior while routing construction through the factory.
         if (auction.getStatus() == null || auction.getStatus().trim().isEmpty()) {

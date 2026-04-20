@@ -3,7 +3,7 @@
 package com.auctionsystem.dto;
 
 import java.util.Date;
-
+import java.util.List;
 /**
  * @author Chirag
  * @description Carries registered auction details for bidder dashboards
@@ -17,6 +17,7 @@ public class BidderAuctionDTO {
     private String auctionType;
     private Date auctionDate;
     private String status;
+    private List<ItemDTO> items;
 
     public BidderAuctionDTO() {}
 
@@ -34,4 +35,7 @@ public class BidderAuctionDTO {
 
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
+
+    public List<ItemDTO> getItems() { return items; }
+    public void setItems(List<ItemDTO> items) { this.items = items; }
 }

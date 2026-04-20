@@ -174,6 +174,13 @@ public class UserServiceImpl implements UserService {
             dto.setAuctionType(auction.getAuctionType() == null ? null : auction.getAuctionType().name());
             dto.setAuctionDate(auction.getAuctionDate());
             dto.setStatus(auction.getStatus());
+            
+            if (auction.getItems() != null) {
+                dto.setItems(auction.getItems().stream()
+                    .map(ItemDTO::new)
+                    .collect(Collectors.toList()));
+            }
+            
             return dto;
         }).collect(Collectors.toList());
     }
